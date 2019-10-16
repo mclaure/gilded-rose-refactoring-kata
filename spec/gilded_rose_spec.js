@@ -97,4 +97,38 @@ describe("Gilded Rose", function() {
     });
   });     
 
+  /***********************  AFTER REFACTOR  ***********************/
+
+  describe("When 'Conjured' produc and quality > 1", function(){  
+    it("Should increase quality twice", function() {
+      var gildedRose = new Shop([ new Item("Conjured", 1, 2) ]);      
+      var items = gildedRose.updateQuality();
+      expect(items[0].quality).toEqual(0);
+    });
+  });   
+
+  describe("When 'Conjured' produc and quality > 0", function(){  
+    it("Should increase quality twice", function() {
+      var gildedRose = new Shop([ new Item("Conjured", 1, 1) ]);      
+      var items = gildedRose.updateQuality();
+      expect(items[0].quality).toEqual(0);
+    });
+  }); 
+
+  describe("When 'Conjured' produc and sellIn < 0 quality > 1", function(){  
+    it("Should increase quality twice", function() {
+      var gildedRose = new Shop([ new Item("Conjured", -1, 2) ]);      
+      var items = gildedRose.updateQuality();
+      expect(items[0].quality).toEqual(0);
+    });
+  });
+
+  describe("When 'Conjured' produc and sellIn < 0 quality > 0", function(){  
+    it("Should increase quality twice", function() {
+      var gildedRose = new Shop([ new Item("Conjured", -1, 1) ]);      
+      var items = gildedRose.updateQuality();
+      expect(items[0].quality).toEqual(0);
+    });
+  });   
+
 });
